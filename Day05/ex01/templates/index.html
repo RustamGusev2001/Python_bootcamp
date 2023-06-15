@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sound Server</title>
+</head>
+<body>
+<h1>Sound Server</h1>
+{% if error %}
+<p style="color: #d01313">{{ error }}</p>
+{% endif %}
+<form enctype="multipart/form-data" method="post" action="/upload">
+    <input type=file name="file">
+    <input type="submit" value="Загрузить файл">
+    <p></p>
+</form>
+<hr>
+{% for item in list_singls %}
+    <p>{{ item }}</p>
+<audio controls>
+     <source src="/upload/{{ item }}" type="audio/mp3">
+</audio>
+    {% endfor %}
+</body>
+</html>
